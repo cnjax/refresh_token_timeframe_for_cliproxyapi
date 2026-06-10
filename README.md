@@ -14,7 +14,7 @@ A Python implementation of the same logic, offering better error handling and cr
 
 ## How it Works
 
-1. Fetches all currently active auth files from the proxy.
+1. Fetches all currently active auth files from the cliproxyapi.
 2. Disables them temporarily.
 3. Iterates through each one, enabling it, sending a "ping" request to `/v1/chat/completions`, and then disabling it again.
 4. Restores the original active state of all files upon completion or interruption.
@@ -24,8 +24,8 @@ A Python implementation of the same logic, offering better error handling and cr
 The scripts use environment variables with defaults:
 
 - `MANAGEMENT_KEY`: The secret key for the Management API (default: `TEST_MANAGEMENT_KEY`).
-- `API_KEY`: A valid API key for the proxy (default: `sk-TEST_API_KEY`).
-- `BASE_URL`: The base URL of the CLI Proxy API (default: `http://127.0.0.1:8317`).
+- `API_KEY`: A valid API key for the cliproxyapi (default: `sk-TEST_API_KEY`).
+- `BASE_URL`: The base URL of the cliproxyapi (default: `http://127.0.0.1:8317`).
 
 #### Usage
 
@@ -50,7 +50,7 @@ MANAGEMENT_KEY="your-secret" BASE_URL="https://proxy.example.com" ./refresh_via_
 To run the refresh automatically (e.g., at 7:00 AM and 12:00 PM every day), add the following to your crontab (`crontab -e`):
 
 ```cron
-0 7,12 * * * /bin/bash /path/to/CLIProxyAPI/triggertoken/refresh_via_v1.sh >> /path/to/CLIProxyAPI/triggertoken/refresh.log 2>&1
+0 7,12 * * * /bin/bash /path/to/cliproxyapi/triggertoken/refresh_via_v1.sh >> /path/to/cliproxyapi/triggertoken/refresh.log 2>&1
 ```
 
 ## Requirements

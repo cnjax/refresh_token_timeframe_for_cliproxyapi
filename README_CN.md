@@ -14,7 +14,7 @@
 
 ## 工作原理
 
-1. 从代理获取所有当前活跃的验证文件。
+1. 从 cliproxyapi 获取所有当前活跃的验证文件。
 2. 暂时禁用它们。
 3. 逐个遍历，启用它，向 `/v1/chat/completions` 发送 "ping" 请求，然后再次禁用它。
 4. 在完成或中断时恢复所有文件的原始活跃状态。
@@ -24,8 +24,8 @@
 脚本使用具有默认值的环境变量：
 
 - `MANAGEMENT_KEY`: 管理 API 的密钥 (默认值: `TEST_MANAGEMENT_KEY`)。
-- `API_KEY`: 代理的有效 API 密钥 (默认值: `sk-TEST_API_KEY`)。
-- `BASE_URL`: CLI Proxy API 的基础 URL (默认值: `http://127.0.0.1:8317`)。
+- `API_KEY`: cliproxyapi 的有效 API 密钥 (默认值: `sk-TEST_API_KEY`)。
+- `BASE_URL`: cliproxyapi 的基础 URL (默认值: `http://127.0.0.1:8317`)。
 
 #### 使用方法
 
@@ -50,7 +50,7 @@ MANAGEMENT_KEY="your-secret" BASE_URL="https://proxy.example.com" ./refresh_via_
 要自动运行刷新（例如，每天早上 7:00 和中午 12:00），请将以下内容添加到您的 crontab (`crontab -e`)：
 
 ```cron
-0 7,12 * * * /bin/bash /path/to/CLIProxyAPI/triggertoken/refresh_via_v1.sh >> /path/to/CLIProxyAPI/triggertoken/refresh.log 2>&1
+0 7,12 * * * /bin/bash /path/to/cliproxyapi/triggertoken/refresh_via_v1.sh >> /path/to/cliproxyapi/triggertoken/refresh.log 2>&1
 ```
 
 ## 要求
