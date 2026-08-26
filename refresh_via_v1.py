@@ -119,9 +119,9 @@ def main():
         time.sleep(1)
 
         # 2. Determine the model to use based on provider
-        model = "gpt-5.4-mini" # default fallback
+        model = "gpt-5.6-luna" # default fallback
         if provider == "codex":
-            model = "gpt-5.4-mini"
+            model = "gpt-5.6-luna"
         elif provider == "claude":
             model = "claude-sonnet-4-6"
         elif provider in ("gemini-cli", "gemini", "antigravity"):
